@@ -20,7 +20,7 @@ class DoubleLinkedList:
 
     def add(self, nama_obat, dosis_obat, stok_obat, harga_obat, exp_date, pos=None):
         node = Node(nama_obat, dosis_obat, stok_obat, harga_obat, exp_date)
-        if pos is None:  # Jika posisi tidak ditentukan, tambahkan di akhir
+        if posisi is None:  # Jika posisi tidak ditentukan, tambahkan di akhir
             if self.tail is None:
                 self.head = node
                 self.tail = node
@@ -29,7 +29,7 @@ class DoubleLinkedList:
                 node.prev = self.tail
                 self.tail = node
             self.size += 1
-        elif pos == 1:  # Jika posisi adalah 1, tambahkan di awal
+        elif posisi == 1:  # Jika posisi adalah 1, tambahkan di awal
             if self.head is None:
                 self.head = node
                 self.tail = node
@@ -38,9 +38,9 @@ class DoubleLinkedList:
                 self.head.prev = node
                 self.head = node
             self.size += 1
-        elif 1 < pos <= self.size + 1:  # Jika posisi di tengah
+        elif 1 < posisi <= self.size + 1:  # Jika posisi di tengah
             current = self.head
-            for _ in range(1, pos - 1):
+            for _ in range(1, posisi - 1):
                 if current is not None:
                     current = current.next
                 else:
@@ -86,38 +86,6 @@ class DoubleLinkedList:
             
         print(tabel)
 
-class historymasuk:
-    def __init__(self):
-        self.head = None
-        self.tail = None
-        self.size = 0 
-
-    def add(self, nama_obat, dosis_obat, stok_obat, harga_obat, exp_date):
-        node = Node(nama_obat, dosis_obat, stok_obat, harga_obat, exp_date)
-        if self.tail is None:
-            self.head = node
-            self.tail = node
-            self.size += 1
-        else:
-            self.tail.next = node
-            node.prev = self.tail
-            self.tail = node
-            self.size += 1
-
-    def display2(self):
-        if self.head is None:
-            print("Linked list kosong")
-        else:
-            tabel= PrettyTable(['No','nama_obat', 'dosis_obat', 'stok_obat', 'harga_obat', 'exp_date']) 
-            head = self.head
-            x2 = 1
-            while head is not None:
-                tabel.add_row([x2, head.nama_obat, head.dosis_obat, head.stok_obat, head.harga_obat, head.exp_date])
-                x2 += 1
-                head = head.next    
-        print(tabel)
-
-history = historymasuk()
 data = DoubleLinkedList()
 
 while True:
@@ -133,7 +101,6 @@ while True:
     |       5. Keluar                  |
     ======================================
         Masukan No. pilihan anda :  """))
-
     if menu == 1:
         ulang = "y"
         while ulang == "y":
@@ -148,7 +115,6 @@ while True:
             else:
                 posisi = int(posisi)
             data.add(nama, dosis, stok, harga, exp, posisi)
-            history.add(nama, dosis, stok, harga, exp)
             data.display()
             ulang = input("Apakah anda ingin memasukan data lagi (y/n) : ")
             if ulang == "n":
@@ -164,12 +130,12 @@ while True:
         ulang = "y"
         while ulang == "y":
             os.system('cls')
-            print(" Pastikan Anda Telah Menambahkan Data Sebelumnya Jika Ingin Melihat Data terbaru")
+            print(" Pastikan Anda Telah Menambahkan Data Sebelumnya Jika Ingin Ubah Data")
             print('''
         ===================================
         |          Menu Update Data       |
         ===================================
-        |   1. Update Nama Obat           |
+        |   1. Ubah Nama Obat           |
         |   2. Kembali ke Menu Utama      |
         ===================================
             ''')
@@ -205,7 +171,6 @@ while True:
             ulang = input("Apakah anda ingin menghapus data lagi (y/n) : ")
             if ulang == "n":
                 break
-    
     elif menu == 5:
         print("Anda telah keluar dari program")
         break
