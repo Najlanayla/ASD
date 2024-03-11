@@ -1,4 +1,5 @@
 import os
+os.system("cls")
 from prettytable import PrettyTable
 
 class Node:
