@@ -363,9 +363,9 @@ while True:
         pilih = input("  Masukkan pilihan (1/2): ")
         pilih = int(pilih)
         if pilih == 1:
-            nama_obat_cari = input("Masukkan nama obat yang ingin dicari: ")
+            namaObat= input("Masukkan nama obat yang ingin dicari: ")
             data.sortAscendingNama()
-            result = data.jumpsearchNama(nama_obat_cari)
+            result = data.jumpsearchNama(namaObat)
             if result:
                 print(">>>Obat telah ditemukan")
                 print("Nama Obat:", result.nama_obat)
@@ -373,9 +373,9 @@ while True:
                 print(">>>Obat tidak ditemukan.")
 
         elif pilih == 2:
-            harga_obat_cari = int(input("Masukkan harga obat yang ingin dicari: "))
+            hargaObat = int(input("Masukkan harga obat yang ingin dicari: "))
             data.sortAscendingHarga()
-            result = data.jumpsearchHarga(harga_obat_cari)
+            result = data.jumpsearchHarga(hargaObat)
             if result:
                 print(">>>Obat telah ditemukan")
                 print("Harga:", result.harga_obat)
